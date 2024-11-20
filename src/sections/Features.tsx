@@ -111,7 +111,7 @@ const FetaureTab = (
       </div>
       <div className="font-medium">{props.title}</div>
       {props.isNew && (
-        <div className="text-xs rounded-full px-2 py-0.5 bg-[#8c44ff] text-black">
+        <div className="text-xs rounded-full px-2 py-0.5 bg-[#8c44ff] text-white">
           NEW
         </div>
       )}

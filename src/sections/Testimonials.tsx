@@ -73,7 +73,7 @@ export const Testimonials = () => {
                   </div>
 
                   <div>
-                    <h5 className="text-base">{card.name}</h5>
+                    <p className="text-base">{card.name}</p>
                     <p className="text-sm text-white/50">{card.title}</p>
                   </div>
                 </div>
