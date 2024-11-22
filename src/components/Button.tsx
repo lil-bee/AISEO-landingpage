@@ -1,6 +1,13 @@
-export const Button = (props: React.PropsWithChildren) => {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  className?: string;
+}
+
+export const Button = ({ className, ...props }: ButtonProps) => {
   return (
-    <button className="relative rounded-lg py-2 px-3 bg-gradient-to-b from-[#190D2E] to-[#4A208A]  text-sm font-medium shadow-[0px_0px_12px_#8C45FF] hover:shadow-[0px_0px_22px_#8C45FF] transition-all ease-in-out duration-300  group">
+    <button
+      className={`relative rounded-lg py-2 px-3 bg-gradient-to-b from-[#190D2E] to-[#4A208A] text-sm font-medium shadow-[0px_0px_12px_#8C45FF] hover:shadow-[0px_0px_22px_#8C45FF] transition-all ease-in-out duration-300 group ${className}`}
+      {...props}
+    >
       <div className="absolute inset-0">
         <div className="absolute inset-0 inse rounded-lg border border-white/10 [mask-image:linear-gradient(to_bottom,black,transparent)] group-hover:border-white/25 transition-colors duration-300"></div>
         <div className="absolute inset-0 rounded-lg border border-white/40 [mask-image:linear-gradient(to_top,black,transparent)]"></div>
