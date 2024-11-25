@@ -1,17 +1,18 @@
 "use client";
+import productImage from "@/assets/product-image.png";
 import {
   DotLottieCommonPlayer,
   DotLottiePlayer,
 } from "@dotlottie/react-player";
-import productImage from "@/assets/product-image.png";
-import { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react";
 import {
+  animate,
+  motion,
+  useInView,
   useMotionTemplate,
   useMotionValue,
-  motion,
-  animate,
   ValueAnimationTransition,
 } from "framer-motion";
+import { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react";
 
 const tabs = [
   {
@@ -46,6 +47,7 @@ const FetaureTab = (
 ) => {
   const tabRef = useRef<HTMLDivElement>(null);
   const dotLottieRef = useRef<DotLottieCommonPlayer>(null);
+  const isInView = useInView(tabRef, { once: true });
 
   const xPercantage = useMotionValue(0);
   const yPercentage = useMotionValue(0);
@@ -111,9 +113,19 @@ const FetaureTab = (
       </div>
       <div className="font-medium">{props.title}</div>
       {props.isNew && (
-        <div className="text-xs rounded-full px-2 py-0.5 bg-[#8c44ff] text-white">
+        <motion.div
+          initial={{ x: -12, opacity: 0 }}
+          animate={isInView ? { x: 0, opacity: 1 } : {}}
+          transition={{
+            duration: 1,
+            ease: [0.17, 0.55, 0.55, 1],
+            delay: 0.8,
+          }}
+          ref={tabRef}
+          className="text-xs rounded-full px-2 py-0.5 bg-[#8c44ff] text-white"
+        >
           NEW
-        </div>
+        </motion.div>
       )}
     </div>
   );
